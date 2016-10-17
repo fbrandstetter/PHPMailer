@@ -6,6 +6,7 @@ This is a short PHP class to send emails without any hassle.
 
 The basic usage of PHPMailer is pretty easy. An example to send an email looks like this:
 
+    require_once('phpmailer.php');
     $email = new PHPMailer();
     $email->setRecipent("john@doe.com");
     $email->setSender("example@company.com");
