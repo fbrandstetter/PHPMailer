@@ -5,6 +5,7 @@ class PHPMAiler {
   private $message;
   private $subject;
   private $headers;
+  private $priority;
   public function setRecipent($data) {
     $this->to = $data;
   }
@@ -17,9 +18,19 @@ class PHPMAiler {
   public function setSubject($data) {
     $this->subject = $data;
   }
+  public function setPriority($data) {
+    $this->priority = $data;
+  }
   public function setHeaders($data) {
     $this->headers = "From: " . strip_tags($this->from) . "\r\n";
     $this->headers .= "MIME-Version: 1.0\r\n";
+    if($this->priority) {
+      $this->headers .= "X-Priority: " . $this->priority . "\r\n";
+    }
+    else
+    {
+      $this->headers .= "X-Priority: 3\r\n";
+    }
     if($data == "html") {
       $this->headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     }
